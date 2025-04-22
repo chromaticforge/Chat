@@ -14,8 +14,10 @@ public class ChatMod {
     public static final String NAME = "@MOD_NAME@";
     public static final String VERSION = "@MOD_VERSION@";
 
+    public static ChatConfig config;
+
     @Mod.EventHandler
     public void onInit(FMLInitializationEvent event) {
-        new ChatConfig();
+        config = new ChatConfig();
     }
 }

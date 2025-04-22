@@ -1,0 +1,13 @@
+[
+  {
+    "modid": "${mod_id}",
+    "name": "${mod_name}",
+    "description": " A mod to change the visuals of the Chat.",
+    "version": "${mod_version}",
+    "mcversion": "${mc_version}",
+    "url": "https://github.com/chromaticforge/Chat",
+    "authorList": [
+      "chromaticforge", "femmeromantic", "sophia"
+    ]
+  }
+]

@@ -4,6 +4,7 @@ import cc.polyfrost.oneconfig.platform.Platform;
 import cc.polyfrost.oneconfig.renderer.TextRenderer;
 import com.github.chromaticforge.chat.config.ChatConfig;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiNewChat;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,5 +24,11 @@ public class GuiNewChatMixin {
             default:
                 return instance.drawString(text, x, y, color, true);
         }
+    }
+
+    @Redirect(method = "drawChat", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiNewChat;drawRect(IIIII)V"))
+    private void chat$backgroundColor(int left, int top, int right, int bottom, int oldcolor) {
+        int color = ChatConfig.background ? ChatConfig.backgroundColor.getRGB() : 0x00000000;
+        Gui.drawRect(left, top, right, bottom, color);
     }
 }

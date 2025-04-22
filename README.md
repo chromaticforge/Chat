@@ -1,5 +1,16 @@
 ## Chat
-A chatting alternative.
+A mod to change the visuals of the Chat.
 
-## Why
-I think chatting has too many features making it hard to configure.
+This mod is kinda basic, and it's only really made for personal use
+
+Recommended mod: [Chatting](https://modrinth.com/mod/chatting)
+
+## Features
+- Text Shadow
+ - No Shadow
+ - Shadow
+ - Full Shadow
+
+- Background
+ - Toggle
+ - Color

@@ -7,10 +7,10 @@ Recommended mod: [Chatting](https://modrinth.com/mod/chatting)
 
 ## Features
 - Text Shadow
- - No Shadow
- - Shadow
- - Full Shadow
+  - No Shadow
+  - Shadow
+  - Full Shadow
 
 - Background
- - Toggle
- - Color
+  - Toggle
+  - Color

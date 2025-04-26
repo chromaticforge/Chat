@@ -1,12 +1,20 @@
+@file:Suppress("UnstableApiUsage", "PropertyName")
+
+import com.modrinth.minotaur.dependencies.DependencyType
+import com.modrinth.minotaur.dependencies.ModDependency
 import dev.deftu.gradle.utils.GameSide
+import dev.deftu.gradle.utils.VersionType
 
 plugins {
-    id("java")
-    id("dev.deftu.gradle.tools") version("2.33.3")
-    id("dev.deftu.gradle.tools.resources") version("2.33.3")
-    id("dev.deftu.gradle.tools.bloom") version("2.33.3")
-    id("dev.deftu.gradle.tools.shadow") version("2.33.3")
-    id("dev.deftu.gradle.tools.minecraft.loom") version("2.33.3")
+    java
+    kotlin("jvm")
+    id("dev.deftu.gradle.multiversion")
+    id("dev.deftu.gradle.tools")
+    id("dev.deftu.gradle.tools.resources")
+    id("dev.deftu.gradle.tools.bloom")
+    id("dev.deftu.gradle.tools.shadow")
+    id("dev.deftu.gradle.tools.minecraft.loom")
+    id("dev.deftu.gradle.tools.minecraft.releases")
 }
 
 repositories {
@@ -32,4 +40,19 @@ toolkitLoomHelper {
     useDevAuth("1.2.1")
     useProperty("mixin.debug.export", "true", GameSide.CLIENT)
     disableRunConfigs(GameSide.SERVER)
+}
+
+toolkitReleases {
+    versionType = VersionType.RELEASE
+
+    val changelog = rootProject.file("changelogs/${modData.version}.md")
+
+    if (changelog.exists()) {
+        changelogFile.set(changelog)
+    }
+
+    modrinth {
+        projectId.set("chat-oneconfig")
+        dependencies.add(ModDependency("oneconfig", DependencyType.EMBEDDED))
+    }
 }
